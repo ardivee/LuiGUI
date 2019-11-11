@@ -1,0 +1,12 @@
+﻿<Window x:Class="LuiGUI.LuaOutputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LuiGUI"
+        mc:Ignorable="d"
+        Title="Lua Output" Height="450" Width="800" Icon="luigui_icon.ico">
+    <Grid>
+        <TextBox x:Name="LuaOutputText" Text="Hoi" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" />
+    </Grid>
+</Window>

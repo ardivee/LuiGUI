@@ -1,0 +1,98 @@
+﻿<Window x:Class="LuiGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LuiGUI"
+        mc:Ignorable="d"
+        Title="LuiGUI" Height="900" Width="1600" ResizeMode="CanMinimize" Icon="luigui_icon.ico" Closed="Window_Closed" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Name="NewMenu" Click="NewMenu_Click" />
+                <MenuItem Header="_Open PSD" Name="OpenPSDMenu" Click="OpenPSDMenu_Click" />
+                <MenuItem Header="_Load Layer Settings" Name="LoadLayerSettingsMenu" Click="LoadLayerSettingsMenu_Click" />
+                <MenuItem Header="_Save Layer Settings" Name="SaveLayerSettingsMenu" Click="SaveLayerSettingsMenu_Click" />
+                <MenuItem Header="_Export Images" Name="ExportImagesMenu" Click="ExportImagesMenu_Click" />
+                <Separator />
+                <MenuItem Header="_Exit" Name="ExitMenu" Click="ExitMenu_Click" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Change Background" Name="ChangeBackgroundMenu" Click="ChangeBackgroundMenu_Click" />
+                <MenuItem Header="_Settings" Name="SettingsMenu" Click="SettingsMenu_Click" />
+            </MenuItem>
+            <MenuItem Header="_Generate">
+                <MenuItem Header="_Lua" Name="GenerateLuaMenu" Click="GenerateLuaMenu_Click" />
+                <MenuItem Header="_Zone" Name="GenerateZoneMenu" Click="GenerateZoneMenu_Click" />
+            </MenuItem>
+            <MenuItem Header="_About">
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1282"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="722"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Orange" Width="1282" Height="722">
+                <Canvas x:Name="HudCanvas" Background="Transparent" Width="1280" Height="720"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1" BorderThickness="1" BorderBrush="Orange" Margin="10,0,0,0">
+                <ListView x:Name="HudItemList" SelectionMode="Single">
+
+                </ListView>
+            </Border>
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="5,5,0,0" Orientation="Horizontal">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Left Anchor" x:Name="LeftAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" />
+                        <CheckBox Content="Right Anchor" x:Name="RightAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Margin="5,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Content="Left" />
+                        <TextBox Text="0" x:Name="LeftOffsetTxtBox" IsReadOnly="True" />
+                        <Label Content="Right" />
+                        <TextBox Text="0" x:Name="RightOffsetTxtBox" IsReadOnly="True" />
+                    </StackPanel>
+                    <Separator Margin="0,5,0,5" />
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Top Anchor" x:Name="TopAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" />
+                        <CheckBox Content="Bottom Anchor" x:Name="BottomAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Margin="5,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Content="Top" />
+                        <TextBox Text="0" x:Name="TopOffsetTxtBox" IsReadOnly="True" />
+                        <Label Content="Bottom" />
+                        <TextBox Text="0" x:Name="BottomOffsetTxtBox" IsReadOnly="True" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Element Name" />
+                        <TextBox Width="200" x:Name="ElementNameTxtBox" TextChanged="TextBox_TextChanged" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Content="Image Name" />
+                        <TextBox Width="200" x:Name="ImageNameTxtBox" TextChanged="TextBox_TextChanged" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <CheckBox Content="Is Text?" x:Name="IsTextCheckBox" Checked="IsTextCheckBox_Checked" Unchecked="IsTextCheckBox_Checked" Margin="0,5,0,0" />
+                    <StackPanel Visibility="Hidden" x:Name="HasTextPanel">
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Text" />
+                            <TextBox Width="200" x:Name="FontTextBox" TextChanged="FontTextBox_TextChanged" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <Label Content="Font" />
+                            <ComboBox x:Name="FontComboBox" SelectionChanged="FontComboBox_SelectionChanged" Margin="0,5,0,0" Width="200"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>
