@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuiGUI"
         mc:Ignorable="d"
-        Title="LuiGUI Settings" Height="450" Width="800" Icon="luigui_icon.ico" Closed="Window_Closed" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="LuiGUI Settings" Height="450" Width="800" Closed="Window_Closed" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Icon="/LuiGUI;component/luigui_icon.ico">
     <Grid>
         <StackPanel Margin="5,5,0,0">
             <CheckBox Content="Skip Invisible Layers" x:Name="SkipInvisibleLayersCheckBox" Checked="SkipInvisibleLayersCheckBox_Checked" Unchecked="SkipInvisibleLayersCheckBox_Checked" />

@@ -1,5 +1,23 @@
-﻿using LuiGUI.Models;
+﻿#region copyright
+// LuiGUI - PSD to Lui made easier
+// Copyright (c) 2019 Ardivee
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#endregion
+using LuiGUI.Models;
 using LuiGUI.Utils;
+using LuiGUI.Windows;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
@@ -24,12 +42,39 @@ namespace LuiGUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// To open files
+        /// </summary>
         private OpenFileDialog openFileDialog = new OpenFileDialog();
+
+        /// <summary>
+        /// To save files
+        /// </summary>
         private SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+        /// <summary>
+        /// The PSD file loaded
+        /// </summary>
         private PsdFile psdFile = null;
+
+        /// <summary>
+        /// The selected HudElem from the ListView
+        /// </summary>
         private HudElem selectedHudElem = null;
+
+        /// <summary>
+        /// The selected Image on the Canvas
+        /// </summary>
         private Rectangle selectedPreviewImage = null;
+
+        /// <summary>
+        /// Lua Output Window
+        /// </summary>
         private LuaOutputWindow luaOutputWindow;
+
+        /// <summary>
+        /// Zone Output Window
+        /// </summary>
         private ZoneOutputWindow zoneOutputWindow;
 
         public MainWindow()
@@ -637,8 +682,14 @@ namespace LuiGUI
             }
         }
 
+        /// <summary>
+        /// Event fires when a Key is down
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void keyDown(object sender, KeyEventArgs e)
         {
+            // See if the Escape key is pressed
             if (e.Key == Key.Escape)
             {
                 if (selectedPreviewImage != null)
@@ -653,6 +704,7 @@ namespace LuiGUI
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Monitor KeyPresses
             EventManager.RegisterClassHandler(typeof(Window),Keyboard.KeyDownEvent, new KeyEventHandler(keyDown), true);
 
             // List to keep track of unique font names
@@ -749,6 +801,11 @@ namespace LuiGUI
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenerateZoneMenu_Click(object sender, RoutedEventArgs e)
         {
             if (psdFile == null)
@@ -813,6 +870,18 @@ namespace LuiGUI
                 // Just update the Text
                 zoneOutputWindow.ZoneOutputText.Text = sb.ToString();
             }
+        }
+
+        /// <summary>
+        /// Shows the About Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AboutMenu_Click(object sender, RoutedEventArgs e)
+        {
+            // Show the About Window
+            var aboutWindow = new AboutWindow();
+            aboutWindow.Show();
         }
     }
 }

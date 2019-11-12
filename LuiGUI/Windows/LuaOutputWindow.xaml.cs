@@ -20,18 +20,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace LuiGUI
 {
-    public static class Constants
+    /// <summary>
+    /// Interaction logic for LuaOutputWindow.xaml
+    /// </summary>
+    public partial class LuaOutputWindow : Window
     {
-        /// <summary>
-        /// The native Screen Width of the UI
-        /// </summary>
-        public static double ScreenWidth = 1280;
-        /// <summary>
-        /// The native Screen Height of the UI
-        /// </summary>
-        public static double ScreenHeight = 720;
+        public LuaOutputWindow()
+        {
+            InitializeComponent();
+        }
     }
 }
