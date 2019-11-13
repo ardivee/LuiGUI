@@ -31,6 +31,51 @@
         <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
+
+    <Style TargetType="ListViewItem">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource TextColor}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Grid x:Name="Grid">
+                        <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="4,4,4,4" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource BorderColor}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource DarkTextColor}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background" TargetName="Grid">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource BorderColor}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!--#endregion-->
     
     <!--#region Menu -->
@@ -152,7 +197,7 @@
             <Trigger Property="IsHighlighted" Value="true">
                 <Setter Property="Foreground">
                     <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource TextColor}" />
+                        <SolidColorBrush Color="{StaticResource DarkTextColor}" />
                     </Setter.Value>
                 </Setter>
                 <Setter TargetName="Border" Property="BorderBrush">
@@ -216,8 +261,7 @@
     </ControlTemplate>
 
     <!-- SubmenuItem -->
-    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}"
-                 TargetType="{x:Type MenuItem}">
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
         <Border x:Name="Border" BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -240,8 +284,8 @@
                         </Path.Stroke>
                     </Path>
                 </Border>
-                <ContentPresenter x:Name="HeaderHost" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" />
-                <TextBlock x:Name="InputGestureText" Grid.Column="2" Text="{TemplateBinding InputGestureText}" Margin="5,2,0,2" DockPanel.Dock="Right" />
+                <ContentPresenter x:Name="HeaderHost" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" TextBlock.Foreground="{DynamicResource TextBrush}" />
+                <TextBlock x:Name="InputGestureText" Grid.Column="2" Foreground="{DynamicResource TextBrush}" Text="{TemplateBinding InputGestureText}" Margin="5,2,0,2" DockPanel.Dock="Right" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -257,7 +301,12 @@
                 <Setter TargetName="Icon" Property="Visibility" Value="Hidden" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="true">
-                <Setter Property="Foreground">
+                <Setter Property="TextBlock.Foreground" TargetName="HeaderHost">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource DarkTextColor}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" TargetName="InputGestureText">
                     <Setter.Value>
                         <SolidColorBrush Color="{StaticResource DarkTextColor}" />
                     </Setter.Value>
@@ -316,6 +365,11 @@
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
             </Trigger>
             <Trigger Property="IsHighlighted" Value="true">
+                <Setter Property="Foreground">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource DarkTextColor}" />
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Background" TargetName="Border">
                     <Setter.Value>
                         <SolidColorBrush Color="Transparent"/>
