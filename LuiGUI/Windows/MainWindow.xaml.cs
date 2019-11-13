@@ -31,8 +31,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml;
 using Rectangle = System.Windows.Shapes.Rectangle;
 
 namespace LuiGUI
@@ -83,6 +85,16 @@ namespace LuiGUI
 
             // Set default background for Canvas
             HudCanvas.Background = new ImageBrush(new BitmapImage(new Uri(@"pack://application:,,,/luigui_bg.png", UriKind.Absolute)));
+
+            // We need to store this snippet somewhere
+            /*
+            var control = Application.Current.FindResource(typeof(ComboBox));
+            using (XmlTextWriter writer = new XmlTextWriter(@"defaultTemplate.xml", System.Text.Encoding.UTF8))
+            {
+                writer.Formatting = System.Xml.Formatting.Indented;
+                XamlWriter.Save(control, writer);
+            }
+            */
         }
 
         /// <summary>

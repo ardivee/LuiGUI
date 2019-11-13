@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuiGUI.Windows"
         mc:Ignorable="d"
+        Background="{StaticResource BackgroundBrush}"
         Title="About" Height="130.902" Width="432" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>

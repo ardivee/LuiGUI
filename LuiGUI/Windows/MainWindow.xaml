@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuiGUI"
         mc:Ignorable="d"
-        Title="LuiGUI" Height="900" Width="1600" ResizeMode="CanMinimize" Closed="Window_Closed" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Icon="/LuiGUI;component/luigui_icon.ico">
+        Background="{StaticResource BackgroundBrush}"
+        Title="LuiGUI" Height="920" Width="1600" ResizeMode="CanMinimize" Closed="Window_Closed" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Icon="/LuiGUI;component/luigui_icon.ico">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
@@ -46,49 +47,118 @@
             </Border>
             <StackPanel Grid.Row="1" Grid.Column="0" Margin="5,5,0,0" Orientation="Horizontal">
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox Content="Left Anchor" x:Name="LeftAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" />
-                        <CheckBox Content="Right Anchor" x:Name="RightAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Margin="5,0,0,0" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="Left" />
-                        <TextBox Text="0" x:Name="LeftOffsetTxtBox" IsReadOnly="True" />
-                        <Label Content="Right" />
-                        <TextBox Text="0" x:Name="RightOffsetTxtBox" IsReadOnly="True" />
-                    </StackPanel>
-                    <Separator Margin="0,5,0,5" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="0">
+                            <CheckBox Content="Left Anchor" Height="26" x:Name="LeftAnchorCheckBox" VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" />
+                            <CheckBox Content="Right Anchor" Height="26" VerticalContentAlignment="Center" x:Name="RightAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Margin="0,5,0,0" />
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <Label Content="Left"  />
+                                    <Label  Content="Right" Margin="0,5,0,0" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBox Text="0" Height="26" VerticalContentAlignment="Center" x:Name="LeftOffsetTxtBox" IsReadOnly="True" Width="50" HorizontalAlignment="Right" />
+                                    <TextBox Text="0" Height="26" VerticalContentAlignment="Center" x:Name="RightOffsetTxtBox" IsReadOnly="True" Width="50" HorizontalAlignment="Right" Margin="0,5,0,0" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <Border BorderThickness="0,1,0,0" BorderBrush="DimGray" Margin="0,6,0,5" />
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="0">
+                            <CheckBox Content="Top Anchor" Height="26" x:Name="TopAnchorCheckBox" VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" />
+                            <CheckBox Content="Bottom Anchor" Height="26" VerticalContentAlignment="Center" x:Name="BottomAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Margin="0,5,0,0" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0">
+                                    <Label Content="Top"  />
+                                    <Label  Content="Bottom" Margin="0,5,0,0" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBox Text="0" Height="26" VerticalContentAlignment="Center" x:Name="TopOffsetTxtBox" IsReadOnly="True" Width="50" />
+                                    <TextBox Text="0" Height="26" VerticalContentAlignment="Center" x:Name="BottomOffsetTxtBox" IsReadOnly="True" Margin="0,5,0,0" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+
+                    <!--
                     <StackPanel Orientation="Horizontal">
                         <CheckBox Content="Top Anchor" x:Name="TopAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" />
                         <CheckBox Content="Bottom Anchor" x:Name="BottomAnchorCheckBox" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Margin="5,0,0,0" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Content="Top" />
-                        <TextBox Text="0" x:Name="TopOffsetTxtBox" IsReadOnly="True" />
+                        <TextBox Text="0" VerticalContentAlignment="Center" x:Name="TopOffsetTxtBox" IsReadOnly="True" />
                         <Label Content="Bottom" />
-                        <TextBox Text="0" x:Name="BottomOffsetTxtBox" IsReadOnly="True" />
-                    </StackPanel>
+                        <TextBox Text="0" VerticalContentAlignment="Center" x:Name="BottomOffsetTxtBox" IsReadOnly="True" />
+                    </StackPanel>-->
                 </StackPanel>
-                <StackPanel Margin="10,0,0,0">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Element Name" />
-                        <TextBox Width="200" x:Name="ElementNameTxtBox" TextChanged="TextBox_TextChanged" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="Image Name" />
-                        <TextBox Width="200" x:Name="ImageNameTxtBox" TextChanged="TextBox_TextChanged" />
-                    </StackPanel>
+                <Border Margin="5,0,0,5" BorderThickness="1,0,0,1" BorderBrush="DimGray" />
+                <StackPanel Margin="5,0,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Vertical">
+                            <Label Content="Element Name" />
+                            <Label Margin="0,5,0,0" Content="Image Name" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Vertical">
+                            <TextBox Width="200" Height="26" VerticalContentAlignment="Center" x:Name="ElementNameTxtBox" TextChanged="TextBox_TextChanged" />
+                            <TextBox Width="200" Height="26" Margin="0,5,0,0" VerticalContentAlignment="Center" x:Name="ImageNameTxtBox" TextChanged="TextBox_TextChanged" />
+                        </StackPanel>
+                    </Grid>
                 </StackPanel>
+                <Border Margin="10,0,0,5" BorderThickness="1,0,0,1" BorderBrush="DimGray" />
                 <StackPanel Margin="10,0,0,0">
                     <CheckBox Content="Is Text?" x:Name="IsTextCheckBox" Checked="IsTextCheckBox_Checked" Unchecked="IsTextCheckBox_Checked" Margin="0,5,0,0" />
                     <StackPanel Visibility="Hidden" x:Name="HasTextPanel">
-                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Content="Text" />
-                            <TextBox Width="200" x:Name="FontTextBox" TextChanged="FontTextBox_TextChanged" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                            <Label Content="Font" />
-                            <ComboBox x:Name="FontComboBox" SelectionChanged="FontComboBox_SelectionChanged" Margin="0,5,0,0" Width="200"/>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,5,0,0">
+                                <Label Content="Text" />
+                                <Label Content="Font" Margin="0,5,0,0" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,5,0,0">
+                                <TextBox Height="26" Width="200" VerticalContentAlignment="Center" x:Name="FontTextBox" TextChanged="FontTextBox_TextChanged" />
+                                <ComboBox Height="26" x:Name="FontComboBox" SelectionChanged="FontComboBox_SelectionChanged" Margin="0,5,0,0" Width="200"/>
+                            </StackPanel>
+                        </Grid>
+                        
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

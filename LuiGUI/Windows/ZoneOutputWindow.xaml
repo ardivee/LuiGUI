@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LuiGUI"
         mc:Ignorable="d"
+        Background="{StaticResource BackgroundBrush}"
         Title="Zone Output" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="/LuiGUI;component/luigui_icon.ico">
     <Grid>
         <TextBox x:Name="ZoneOutputText" Text="Hoi" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" />
